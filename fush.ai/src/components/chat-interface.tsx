@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
 import ChatMessage from "@/components/chat-message";
 import { Message } from "@/lib/types";
-import { useChat } from "";
+import { useChat } from "ai/react";
 
 export default function ChatInterface() {
   const { messages, input, handleInputChange, handleSubmit, isLoading } =
@@ -22,8 +22,8 @@ export default function ChatInterface() {
       ],
     });
 
-  const adaptedMessages: Message[] = messages.map((message: Message) => ({
-    id: parseInt(message.id) || Math.random().toString(),
+  const adaptedMessages: Message[] = messages.map((message) => ({
+    id: parseInt(message.id) || Math.random(),
     content: message.content,
     type: message.role === "user" ? "user" : "bot",
   }));
